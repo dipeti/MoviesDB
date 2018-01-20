@@ -3,4 +3,6 @@
     <string name="vote_average">Vote average</string>
     <string name="search">search</string>
     <string name="no_items_available">No items available</string>
+    <string name="released">Released:</string>
+    <string name="dollars">$%1$s</string>
 </resources>

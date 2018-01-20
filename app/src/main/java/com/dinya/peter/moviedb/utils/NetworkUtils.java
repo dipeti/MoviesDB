@@ -61,6 +61,20 @@ public class NetworkUtils {
         return Collections.emptyList();
     }
 
+    public static Movie executeMovieSearch(int id){
+        MovieDBService service = retrofit.create(MovieDBService.class);
+        Call<Movie> moviesCall = service.getMovie(id);
+        try {
+            retrofit2.Response<Movie> response = moviesCall.execute();
+            if (response.isSuccessful()){
+                return response.body();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 
 

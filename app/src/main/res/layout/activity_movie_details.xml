@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dinya.peter.moviedb.MovieDetailsActivity">
+    <ImageView
+        android:id="@+id/iv_details_poster"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        tools:background="@drawable/ic_launcher_background"
+        />
+    <TextView
+        android:id="@+id/tv_details_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="76dp"
+        android:fontFamily="monospace"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        app:layout_constraintLeft_toRightOf="@id/iv_details_poster"
+        tools:text="Pulp Fiction" />
+
+    <TextView
+        android:id="@+id/tv_details_vote_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="monospace"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:text="@string/vote_average"
+        app:layout_constraintStart_toEndOf="@id/iv_details_poster"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Vote average:" />
+
+    <TextView
+        android:id="@+id/tv_details_release_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="monospace"
+        android:text="@string/released"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@+id/iv_details_poster"
+        app:layout_constraintTop_toBottomOf="@id/tv_details_vote_label"
+        tools:text="Released:" />
+
+    <TextView
+        android:id="@+id/tv_details_release_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="monospace"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@id/tv_details_release_date_label"
+        app:layout_constraintTop_toTopOf="@+id/tv_details_release_date_label"
+        tools:text="1995-01-25" />
+    <TextView
+        android:id="@+id/tv_details_vote_average"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="monospace"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@id/tv_details_vote_label"
+        app:layout_constraintTop_toTopOf="@id/tv_details_vote_label"
+        tools:text="9.8" />
+
+    <TextView
+        android:id="@+id/tv_details_tagline"
+        android:layout_width="match_parent"
+        android:textStyle="italic"
+        android:textAllCaps="true"
+        android:fontFamily="serif"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/iv_details_poster"
+        tools:text="Just because you are a character doesn't mean you have character" />
+
+    <TextView
+        android:id="@+id/tv_details_overview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rect"
+        app:layout_constraintTop_toBottomOf="@+id/tv_details_tagline"
+        tools:text="@tools:sample/lorem/random" />
+    <TextView
+        android:id="@+id/tv_details_budget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:background="@drawable/rect"
+        app:layout_constraintTop_toBottomOf="@id/tv_details_overview"
+        tools:text="$50000" />
+
+</android.support.constraint.ConstraintLayout>

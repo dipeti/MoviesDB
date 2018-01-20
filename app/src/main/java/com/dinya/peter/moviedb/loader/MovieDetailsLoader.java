@@ -1,7 +1,7 @@
 package com.dinya.peter.moviedb.loader;
 
-import android.content.Context;
 import android.content.AsyncTaskLoader;
+import android.content.Context;
 
 import com.dinya.peter.moviedb.entity.Movie;
 import com.dinya.peter.moviedb.utils.NetworkUtils;
@@ -9,23 +9,22 @@ import com.dinya.peter.moviedb.utils.NetworkUtils;
 import java.util.List;
 
 
-public class MovieLoader extends AsyncTaskLoader<List<Movie>> {
-    private List<Movie> mResult;
-    private String mTitle;
+public class MovieDetailsLoader extends AsyncTaskLoader<Movie> {
+    private int mId;
+    private Movie mResult;
 
-    public MovieLoader(Context context, String title) {
+    public MovieDetailsLoader(Context context, int id) {
         super(context);
-        this.mTitle = title;
-    }
-
-
-    @Override
-    public List<Movie> loadInBackground() {
-        return NetworkUtils.executeMoviesSearch(mTitle);
+        this.mId = id;
     }
 
     @Override
-    public void deliverResult(List<Movie> data) {
+    public Movie loadInBackground() {
+        return NetworkUtils.executeMovieSearch(mId);
+    }
+
+    @Override
+    public void deliverResult(Movie data) {
         mResult = data;
         super.deliverResult(data);
     }

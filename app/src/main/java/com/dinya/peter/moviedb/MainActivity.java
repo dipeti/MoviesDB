@@ -1,12 +1,14 @@
 package com.dinya.peter.moviedb;
 
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,9 +37,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setUp();
-
-
-        getLoaderManager().initLoader(MOVIE_LOADER_ID,new Bundle(),this);
+        Bundle bundle = new Bundle();
+        getLoaderManager().initLoader(MOVIE_LOADER_ID,bundle,this);
     }
 
     private void setUp() {
@@ -63,6 +64,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public Loader<List<Movie>> onCreateLoader(int id, Bundle args) {
         switch (id){
             case MOVIE_LOADER_ID:
@@ -79,11 +85,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
            showEmptyView();
        } else {
            mMovieAdapter.swap(data);
-           mMovieAdapter.notifyDataSetChanged();
            showMovieData();
        }
-
-        Log.v("OnLoaderFinished","Success");
+       Log.v("OnLoaderFinished","Success");
     }
 
 
@@ -103,14 +107,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mRecyclerView.setVisibility(View.VISIBLE);
     }
 
-    private Toast mToast;
     @Override
     public void onClick(Movie movie) {
-        if (mToast != null ){
-            mToast.cancel();
-        }
-        mToast = Toast.makeText(getBaseContext(),movie.toString() +  " has been clicked.",Toast.LENGTH_SHORT);
-        mToast.show();
-
+        Intent intent = new Intent(getBaseContext(),MovieDetailsActivity.class);
+        intent.putExtra("id", movie.getId());
+        startActivity(intent);
     }
 }
